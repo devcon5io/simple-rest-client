@@ -126,7 +126,7 @@ public class SimpleRestClient {
             con.setRequestMethod(method);
             headers.entrySet().forEach(e -> con.setRequestProperty(e.getKey(), e.getValue()));
 
-            if (dataProvider != null && ("POST".equals(method) || "PUT".endsWith(method))) {
+            if (dataProvider != null && ("POST".equals(method) || "PUT".equals(method))) {
                con.setDoOutput(true);
                try (OutputStream os = con.getOutputStream()) {
                   dataProvider.accept(os);
