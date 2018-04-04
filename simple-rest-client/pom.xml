@@ -11,4 +11,12 @@
 
     <artifactId>simple-rest-client</artifactId>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.github.tomakehurst</groupId>
+            <artifactId>wiremock-standalone</artifactId>
+            <version>2.16.0</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 </project>

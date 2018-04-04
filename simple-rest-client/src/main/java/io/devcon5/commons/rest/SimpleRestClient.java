@@ -186,7 +186,7 @@ public class SimpleRestClient {
        * @return
        *  the response handle
        */
-      public Response post(Consumer<OutputStream> dataProvider) {
+      public Response post(CheckedConsumer<OutputStream> dataProvider) {
 
          return buildRequest("POST", dataProvider);
       }
@@ -197,7 +197,7 @@ public class SimpleRestClient {
        * @return
        *  the response handle
        */
-      public Response put(Consumer<OutputStream> dataProvider) {
+      public Response put(CheckedConsumer<OutputStream> dataProvider) {
 
          return buildRequest("PUT", dataProvider);
       }
@@ -375,5 +375,19 @@ public class SimpleRestClient {
          }
          return contentType;
       }
+   }
+
+   interface CheckedConsumer<T> extends Consumer<T> {
+
+      @Override
+      default void accept(T t) {
+         try {
+            acceptChecked(t);
+         } catch (Exception e) {
+            throw new RuntimeException(e);
+         }
+      }
+
+      void acceptChecked(T t) throws Exception;
    }
 }
