@@ -2,41 +2,27 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     
     <modelVersion>4.0.0</modelVersion>
+    <packaging>pom</packaging>
+    <modules>
+        <module>simple-rest-client</module>
+    </modules>
 
     <parent>
-        <groupId>io.tourniquet</groupId>
+        <groupId>io.devcon5</groupId>
         <artifactId>parent</artifactId>
-        <version>1.1</version>
+        <version>1.3</version>
     </parent>
 
-    <artifactId>simple-rest-client</artifactId>
-	<groupId>io.tourniquet.rest</groupId>
+    <artifactId>commons-rest</artifactId>
+	<groupId>io.devcon5.commons</groupId>
     <version>1.1-SNAPSHOT</version>
+    <packaging>pom</packaging>
 
     <description>
         A simple HttpUrlConnection based client for fluent access to Rest-APIs.
     </description>
 
     <inceptionYear>2017</inceptionYear>
-
-    <developers>
-        <developer>
-            <name>Gerald Mücke</name>
-            <email>gerald.muecke@devcon5.ch</email>
-            <organization>DevCon5</organization>
-        </developer>
-    </developers>
-
-    <distributionManagement>
-        <snapshotRepository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
-        </snapshotRepository>
-        <repository>
-            <id>ossrh</id>
-            <url>https://oss.sonatype.org/service/local/staging/deploy/maven2/</url>
-        </repository>
-    </distributionManagement>
 
     <build>
         <plugins>
