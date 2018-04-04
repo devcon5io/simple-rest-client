@@ -1,4 +1,4 @@
-package io.tourniquet.restclient;
+package io.devcon5.commons.rest;
 
 import javax.net.ssl.HttpsURLConnection;
 import javax.net.ssl.SSLContext;

@@ -1,4 +1,4 @@
-package io.tourniquet.restclient;
+package io.devcon5.commons.rest;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
