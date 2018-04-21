@@ -10,62 +10,74 @@ import org.junit.Test;
 
 public class JAXBEntityReaderTest {
 
-   /**
-    * The class under test
-    */
-   private JAXBEntityReader subject = new JAXBEntityReader();
+    /**
+     * The class under test
+     */
+    private JAXBEntityReader subject = new JAXBEntityReader();
 
-   @Test
-   public void supports_applicationXML() {
-      assertTrue(subject.supports(Object.class, "application/xml"));
-   }
+    @Test
+    public void supports_applicationXML() {
 
-   @Test
-   public void supports_textXML() {
-      assertTrue(subject.supports(Object.class, "text/xml"));
-   }
+        assertTrue(subject.supports(Object.class, "application/xml"));
+    }
 
-   @Test
-   public void supports_applicationXMLPlus() {
-      assertTrue(subject.supports(Object.class, "application/xml+other"));
-   }
-   @Test
-   public void supports_textXMLPlus() {
-      assertTrue(subject.supports(Object.class, "text/xml+Other"));
-   }
+    @Test
+    public void supports_textXML() {
 
-   @Test
-   public void doesnot_supports_applicationJson() {
-      assertFalse(subject.supports(Object.class, "application/json"));
-   }
+        assertTrue(subject.supports(Object.class, "text/xml"));
+    }
 
-   @Test
-   public void read_entity_fromBytes() {
+    @Test
+    public void supports_applicationXMLPlus() {
 
-      CustomEntity e = subject.read(CustomEntity.class, "application/xml", "<CustomEntity><body>text</body><".getBytes());
+        assertTrue(subject.supports(Object.class, "application/xml+other"));
+    }
 
-      assertEquals("text", e.getBody());
-   }
+    @Test
+    public void supports_textXMLPlus() {
 
-   @Test
-   public void read_entity_fromStream() {
+        assertTrue(subject.supports(Object.class, "text/xml+Other"));
+    }
 
+    @Test
+    public void doesnot_supports_applicationJson() {
 
-      CustomEntity e = subject.read(CustomEntity.class, "application/xml", new ByteArrayInputStream("<CustomEntity><body>text</body></CustomEntity>".getBytes()));
+        assertFalse(subject.supports(Object.class, "application/json"));
+    }
 
-      assertEquals("text", e.getBody());
+    @Test
+    public void read_entity_fromBytes() {
 
-   }
+        CustomEntity e = subject.read(CustomEntity.class,
+                                      "application/xml",
+                                      "<CustomEntity><body>text</body></CustomEntity>".getBytes());
 
-   public static class CustomEntity{
-      private String body;
+        assertEquals("text", e.getBody());
+    }
 
-      public String getBody() {
-         return body;
-      }
+    @Test
+    public void read_entity_fromStream() {
 
-      public void setBody(final String body) {
-         this.body = body;
-      }
-   }
+        CustomEntity e = subject.read(CustomEntity.class,
+                                      "application/xml",
+                                      new ByteArrayInputStream("<CustomEntity><body>text</body></CustomEntity>".getBytes()));
+
+        assertEquals("text", e.getBody());
+
+    }
+
+    public static class CustomEntity {
+
+        private String body;
+
+        public String getBody() {
+
+            return body;
+        }
+
+        public void setBody(final String body) {
+
+            this.body = body;
+        }
+    }
 }
